@@ -32,7 +32,6 @@ def get_single_page(url, user_agent):
         for x in review.find_all('a'):
             href = x.get('href')
             m = re.search(r"(.*?)\.aspx\?id=(\d+)", href)
-            # print(href, type(href), m.group(1))
             if m:
                 if m.group(1) == "author":
                     author = x.text
@@ -60,7 +59,7 @@ def get_all_revievs(uid, base_url, user_agent, verbose):
         if verbose:
             print("Got {} with {} book reviews".format(url, len(data)))
         page += 1
-        # break if last element already known
+        # break if last element is already known
         if data[-1] in alldata:
             has_next = False
             if verbose:
